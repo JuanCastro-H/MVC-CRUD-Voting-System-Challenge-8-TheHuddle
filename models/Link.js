@@ -74,6 +74,36 @@ class Link {
     }
 
 
+    // --- Actualizar link existente ---
+    static update(id,data){
+        const db = getDB();
+
+        // --- Buscar la posicion/indice del link ---
+        const index = db.links.findIndex(link => link.id === Number(id));
+
+        // --- Si no se encuentra devolver null ---
+        if (index === -1) return null;
+
+        // --- Actualizar Campos Modificados ---
+        db.links[index] = {
+
+        ...db.links[index],             //
+        title       : data.title,       //
+        url         : data.url,         //
+        description : data.description  //
+
+        }
+
+        // --- Guardar Cambios ---
+        saveDB(db);
+
+
+        // --- Retornar Link Actualizado ---
+        return db.links[index];
+
+    }
+
+
 }
 
 
