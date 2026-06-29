@@ -104,6 +104,18 @@ class Link {
     }
 
 
+    // --- Eliminar un Link por su ID ---
+    static delete(id) {
+        const db = getDB();
+
+        // --- Filtrar todos los demas links ---
+        db.links = db.links.filter(link => link.id !== Number(id)); // Deja afuera el link a eliminar.
+
+        // --- Guardar Cambios ---
+        saveDB(db);
+    }
+
+
 }
 
 
