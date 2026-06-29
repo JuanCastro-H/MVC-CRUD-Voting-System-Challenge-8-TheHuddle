@@ -1,7 +1,7 @@
 const fs = require("fs");     // fs -> File System: Libreria que trabaja con archivos.
 const path = require("path"); // Sirve para construir rutas de archivos.
 
-// --- Construir ruta completa a la base de datos ---
+// --- Construir ruta adsoluta completa a la base de datos ---
 const dbPath = path.join(__dirname, "../data/db.json");
 
 
@@ -21,12 +21,27 @@ const saveDB = (data) => {
 };
 
 
-
-
+// ========================================
+// Modelo Topic:
+// * Centraliza todas las operaciones CRUD
+// ========================================
 class Topic {
 
 
+    // --- Obtener todos los temas registrados ---
+    static findAll(){
+        const db = getDB();
+        return db.topics;
+    }
+
+
+    // --- Buscar un tema por su id ---
+    static findById(id){
+        const db = getDB();
+        return db.topics.find(topic => topic.id === Number(id));
+    }
 
 }
 
+// --- Exportar modelo ---
 module.exports = Topic;
