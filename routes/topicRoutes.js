@@ -20,6 +20,9 @@ router.get("/new", topicController.showCreateForm);
 router.post("/", topicController.createTopic);
 
 
+// --- MOSTRAR FORMULARIO DE EDICIÓN ---
+router.get("/:id/edit", topicController.showEditForm);
+
 
 
 
