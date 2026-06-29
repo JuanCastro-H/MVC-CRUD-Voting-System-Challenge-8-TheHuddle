@@ -31,7 +31,5 @@ router.put("/:id", topicController.updateTopic);
 router.delete("/:id", topicController.deleteTopic);
 
 
-
-
 // --- Exportar router ---
 module.exports = router;
