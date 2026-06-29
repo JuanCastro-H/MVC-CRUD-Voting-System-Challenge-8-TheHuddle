@@ -38,9 +38,31 @@ class Topic {
     // --- Buscar un tema por su id ---
     static findById(id){
         const db = getDB();
-        return db.topics.find(topic => topic.id === Number(id));
+        return db.topics.find(topic => topic.id === Number(id)); 
     }
 
+
+    // --- Crear nuevo topic ---
+    static create(data){
+        const db = getDB();
+
+        const newTopic = {
+
+            id         : Date.now(),       // Id del tema.
+            title      : data.title,       // Titulo del tema.
+            description: data.description, // Descripcion del tema
+            votes      : 0,                // Votos del tema.
+            createdAt  : new Date()        // Momento de creacion del tema.
+
+        };
+
+        db.topics.push(newTopic);
+        saveDB(db);
+
+        return newTopic;
+    }
+
+    
 }
 
 // --- Exportar modelo ---
