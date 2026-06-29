@@ -48,6 +48,13 @@ exports.updateTopic = (req,res) => {
 }
 
 
+// --- Eliminar un tema ---
+exports.deleteTopic = (req, res) => {
+    Topic.delete(req.params.id);     // Obtiene el Id y borra el tema.
+    res.redirect("/topics");         // Redirecionar a la pagina principal.
+}
+
+
 
 
 
