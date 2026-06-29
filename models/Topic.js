@@ -62,7 +62,32 @@ class Topic {
         return newTopic;
     }
 
-    
+
+    // --- Actualizar tema ---
+    static update(id, data){
+        const db = getDB();
+
+        const index = db.topics.findIndex(topic => topic.id === Number(id));
+
+        // --- Sino existe el tema retornar null ---
+        if (index === -1) return null;
+
+        // --- Actualizar datos del tema ---
+        db.topics[index] = {
+
+            ...db.topics[index],           // Conseva las propiedades existentes del tema. (spreaad operator: copia todo lo que hay dentro del objeto)
+            title: data.title,             // Reemplaza el titulo.
+            description: data.description  // Reemplaza la descripcion
+
+        };
+
+        // --- Guardar en la DB ---
+        saveDB(db);
+
+        // --- Retornar el tema actualizado --
+        return db.topics[index];
+    }
+
 }
 
 // --- Exportar modelo ---
