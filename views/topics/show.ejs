@@ -1,0 +1,16 @@
+<!-- MISION: MOSTRAR UN SOLO TEMA -->
+
+<!-- Titulo Del Tema -->
+<h1><%= topic.title %></h1>
+
+<!-- Descripcion -->
+<p><%= topic.description %></p>
+
+<!-- Votos -->
+<p>Votos: <%= topic.votes %></p>
+
+<!-- ID -->
+<p>ID: <%= topic.id %></p>
+
+<!-- Link a vista edit -->
+<a href="/topics/<%= topic.id %>/edit">Editar</a>
