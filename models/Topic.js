@@ -88,6 +88,18 @@ class Topic {
         return db.topics[index];
     }
 
+
+    // --- Eliminar tema ---
+    static delete(id){
+        const db = getDB();
+        
+        // --- Eliminar el tema cuyo ID coincida con el recibido ---
+        db.topics = db.topics.filter(t => t.id !== Number(id)); // No lo guarda.
+
+        // --- Guardar cambios ---
+        saveDB(db);
+    }
+
 }
 
 // --- Exportar modelo ---
