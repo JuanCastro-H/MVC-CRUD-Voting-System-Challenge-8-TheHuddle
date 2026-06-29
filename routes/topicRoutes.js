@@ -16,6 +16,10 @@ router.get("/:id", topicController.getTopicById);
 // --- MOSTRAR FORMULARIO DE CREACIÓN ---
 router.get("/new", topicController.showCreateForm);
 
+// --- CREAR UN NUEVO TEMA ---
+router.post("/", topicController.createTopic);
+
+
 
 
 
