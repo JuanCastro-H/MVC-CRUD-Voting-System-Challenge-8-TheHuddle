@@ -1,2 +1,19 @@
-<h1>Topics</h1>
-<p>Mi primer flujo MVC.</p>
+<h1>Temas</h1>
+
+<a href="/topics/new">Crear Tema</a>
+
+<ul>
+    <% topics.forEach(topic => { %>
+        <li>
+            <a href="/topics/<%= topic.id %>">
+                <%= topic.title %>
+            </a>
+
+            <a href="/topics/<%= topic.id %>/edit">Editar</a>
+
+            <form action="/topics/<%= topic.id %>?_method=DELETE" method="POST">
+                <button>Eliminar</button>
+            </form>
+        </li>
+    <% }) %>
+</ul>
