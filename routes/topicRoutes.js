@@ -6,11 +6,17 @@ const topicController = require("../controllers/topicController");
 // Ruta para obtener todos los topics
 // -------------------------------------
 
-// --- LISTAR TODOS LOS TOPICS ---
+// --- LISTAR TODOS LOS TEMAS ---
 router.get("/", topicController.getAllTopics);
 
-// --- VER UN TOPIC ESPECÍFICO ---
+// --- VER UN TEMA ESPECÍFICO ---
 router.get("/:id", topicController.getTopicById);
+
+
+// --- MOSTRAR FORMULARIO DE CREACIÓN ---
+router.get("/new", topicController.showCreateForm);
+
+
 
 
 
