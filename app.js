@@ -11,16 +11,22 @@ const linkRoutes = require("./routes/linkRoutes");
 const voteRoutes = require("./routes/voteRoutes");
 
 
+// --- EJS ---
 app.set("view engine", "ejs"); // Las vistan van a usar EJS.
 app.set("views", "./views");   // Posicion de la carpeta.
 
 
+// Middleware
 // --- Transformar texto plano HTML a objeto js ---
 app.use(express.urlencoded({extended: true})); // HTML a objeto js - Datos complejos.
 app.use(express.json());                       // JS en formato json.
 
+
 // --- Enviar archivos en public al navegador ---
 app.use(express.static("public"));
+
+// --- PERMITIR PUT Y DELETE DESDE FORMULARIOS --
+app.use(methodOverride("_method"));
 
 
 // --- Configuracion de rutas ---
