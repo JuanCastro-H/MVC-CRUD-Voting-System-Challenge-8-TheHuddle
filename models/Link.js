@@ -47,6 +47,33 @@ class Link {
         return db.links.filter(link => link.topicId === Number(topicId));
     }
 
+
+    // --- Crear Un Nuevo Link ---
+    static create(topicId, data){
+        const db = getDB();
+
+        // --- Obtener Data del Link ---
+        const newLink = {
+            id          : Date.now(),       // Id del link.
+            topicId     : Number(topicId),  // Id del tema del link.
+            title       : data.title,       // Titulo del link.
+            url         : data.url,         // Url del link.
+            description : data.description, // Descripcion del link.
+            votos       : 0,                // Votos del link.
+            createdAt   : new Date()        // Momento en el que se creo el link.
+        }
+
+        // --- Agregar el Link a la BD ---
+        db.links.push(newLink);
+
+        // --- Guardar Cambios ---
+        saveDB(db);
+
+        // --- Retornar nuevo link ---
+        return newLink
+    }
+
+
 }
 
 
