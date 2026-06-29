@@ -25,3 +25,11 @@ exports.showCreateForm = (req, res) => {
     res.render("topics/new");  // Muestra el formulario para crear tema.        
 }
 
+
+// --- Crear Tema ---
+exports.createTopic = (req, res) => {
+    Topic.create(req.body);   // Obtiene la data del form y crea el tema.
+    res.redirect("/topics");  // Redireccionar a la pagina principal.
+}
+
+
