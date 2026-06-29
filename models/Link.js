@@ -20,9 +20,19 @@ const saveDB = (data) => {
 };
 
 
-// --- Modelo de un link ---
+// ========================================
+// Modelo Link:
+// * Centraliza todas las operaciones CRUD
+// ========================================
 class Link {
+
+    // --- Obtener Todos los links registrados ---
+    static findAll(){
+        return getDB().links;
+    }
 
 }
 
+
+// --- Exportar modelo de link ---
 module.exports = Link;
