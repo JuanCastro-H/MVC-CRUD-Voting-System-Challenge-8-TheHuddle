@@ -41,3 +41,14 @@ exports.showEditForm = (req, res) => {
 }
 
 
+// --- Editar tema (PUT) ---
+exports.updateTopic = (req,res) => {
+    Topic.update(req.params.id, req.body);  //  Obtiene Id y data y actualizar.
+    res.redirect("/topics");                // Redirigir a la pagina principal.
+}
+
+
+
+
+
+
