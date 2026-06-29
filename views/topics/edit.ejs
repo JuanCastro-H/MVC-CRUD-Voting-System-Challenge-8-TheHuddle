@@ -1,0 +1,14 @@
+<!-- MISION: MOSTRAR FORMULARIO DE EDICION -->
+
+<!-- Titulo -->
+<h1>Editar Tema</h1>
+
+<!-- Formulario de edicion -->
+<form action="/topics/<%= topic.id %>?_method=PUT" method="POST">
+    <input name="title" value="<%= topic.title %>">
+    <textarea name="description"><%= topic.description %></textarea>
+
+    <!-- Enviar Datos Del Formulario -->
+    <button>Actualizar</button>
+
+</form>
