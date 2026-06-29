@@ -39,6 +39,14 @@ class Link {
         return db.links.find(link => link.id === Number(id));
     }
 
+
+    // --- Obtener links de un Tema ---
+    static findByTopic(topicId){
+        const db = getDB();
+
+        return db.links.filter(link => link.topicId === Number(topicId));
+    }
+
 }
 
 
