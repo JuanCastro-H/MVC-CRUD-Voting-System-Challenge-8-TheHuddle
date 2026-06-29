@@ -31,6 +31,14 @@ class Link {
         return getDB().links;
     }
 
+
+    // --- Buscar un Link por su ID ---
+    static findById(id){
+        const db = getDB();
+
+        return db.links.find(link => link.id === Number(id));
+    }
+
 }
 
 
