@@ -23,6 +23,12 @@ router.post("/", topicController.createTopic);
 // --- MOSTRAR FORMULARIO DE EDICIÓN ---
 router.get("/:id/edit", topicController.showEditForm);
 
+// --- EDITRA UN TEMA ---
+router.put("/:id", topicController.updateTopic);
+
+
+// --- ELIMINAR UN TOPIC ---
+router.delete("/:id", topicController.deleteTopic);
 
 
 
