@@ -33,3 +33,11 @@ exports.createTopic = (req, res) => {
 }
 
 
+// --- Formulario para editar un tema ---
+exports.showEditForm = (req, res) => {
+    const topic = Topic.findById(req.params.id);  // Obtiene el tema a editar.
+
+    res.render("topics/edit", { topic });         // Muestra el formulario con el tema cargado.
+}
+
+
