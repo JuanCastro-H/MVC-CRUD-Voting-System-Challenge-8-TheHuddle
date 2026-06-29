@@ -20,3 +20,8 @@ exports.getTopicById = (req, res) => {
 }
 
 
+// --- Formulario para crear un tema ---
+exports.showCreateForm = (req, res) => {
+    res.render("topics/new");  // Muestra el formulario para crear tema.        
+}
+
