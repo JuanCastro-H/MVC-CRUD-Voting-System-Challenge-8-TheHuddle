@@ -116,6 +116,18 @@ class Link {
     }
 
 
+    // --- Eliminar Todos los Links De Un Tema ---
+    static deleteByTopic(topicId){
+        const db = getDB();
+
+        // --- Buscar los links que no coincidan con el id del Tema ---
+        db.links = db.links.filter(link => link.topicId !== Number(topicId));
+
+        // --- Guardar en la base de datos ---
+        saveDB(db);
+
+    }
+
 }
 
 
