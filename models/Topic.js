@@ -106,6 +106,28 @@ class Topic {
         Links.deleteByTopic(id); 
     }
 
+
+    // --- Aumentar votos ---
+    static vote(id){
+        const db = getDB();
+
+        // --- Busca El Tema Por Su ID ---
+        const topic = db.topics.find(topic => topic.id === Number(id));
+
+        // --- Si no Existe Devolver null ---
+        if(!topic) return null;
+
+        // --- Aumentar los votos ---
+        topic.votes ++;
+
+        // --- Guardar Datos ---
+        saveDB(db);
+
+        // --- Devolver Tema ---
+        return topic;
+
+    }
+
 }
 
 // --- Exportar modelo ---
