@@ -6,6 +6,8 @@ const voteController = require("../controllers/voteController");
 router.post("topics/:id/vote", voteController.VoteTopic);
 
 
+// --- Ruta Para Votar Por Un Link ---
+router.post("/topics/:id/vote", voteController.voteLink);
 
 
 // --- Exportar router ---
