@@ -2,11 +2,11 @@
 const router = require("express").Router();
 const voteController = require("../controllers/voteController");
 
+// --- Ruta Para Votar Un Tema ---
+router.post("topics/:id/vote", voteController.VoteTopic);
 
-// ----------------------------------------
-// Ruta para Obtener los votos de un tema
-// ----------------------------------------
-router.get("/", voteController.VoteTopic);
+
+
 
 // --- Exportar router ---
 module.exports = router;
