@@ -2,11 +2,11 @@
 const Topic = require("../models/Topic");
 
 // --- Importar Modelo de Links --
-const Link = required("../models/Link");
+const Link = require("../models/Link");
 
 
 // --- Logica Para Votar Un Tema ---
-exports.VoteTopic = (req, res) => {
+exports.voteTopic = (req, res) => {
 
     // --- Aumentar Voto del Tema ---
     Topic.vote(req.params.id);
