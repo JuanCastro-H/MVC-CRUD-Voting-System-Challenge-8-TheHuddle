@@ -34,7 +34,7 @@ class Topic {
     // --- Obtener todos los temas registrados ---
     static findAll(){
         const db = getDB();
-        return db.topics;
+        return db.topics.sort( (a,b) => b.votes - a.votes);
     }
 
 
