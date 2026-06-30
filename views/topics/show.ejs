@@ -1,4 +1,7 @@
+<!-- ===================================== -->
 <!-- MISION: MOSTRAR UN SOLO TEMA -->
+<!-- Muestra el detalle de un topic -->
+<!-- ===================================== -->
 
 <!-- Titulo Del Tema -->
 <h1><%= topic.title %></h1>
@@ -14,3 +17,45 @@
 
 <!-- Link a vista edit -->
 <a href="/topics/<%= topic.id %>/edit">Editar</a>
+
+<hr>
+
+
+<!-- ===================================== -->
+<!-- SECCIÓN: LINKS DEL TEMA -->
+<!-- ===================================== -->
+
+<h2>Links</h2>
+
+<!-- Recorre Todos los Links Del Tema -->
+<% links.forEach(link => { %>
+
+        <div>
+
+            <!-- Titulo -->
+            <h3><%= link.title %></h3>
+            
+            <!-- Descripcion -->
+            <p><%= link.description %></p>
+            
+            <!-- Link/Enlace externo -->
+            <a href="<%= link.url %>" target="_blank">Ir al recurso</a>
+
+            <br><br>
+
+            <!-- Link para ir al formulario de edicion -->
+            <a href="/links/<%= link.id %>/edit">Editar</a>
+
+            <!-- Formulario para eliminar el link -->
+            <form action="/links/<%= link.id %>?_method=DELETE" method="POST">
+                <button>Eliminar</button>
+            </form>
+
+        </div>
+
+        <hr>
+    
+    
+<% }) %>
+
+
