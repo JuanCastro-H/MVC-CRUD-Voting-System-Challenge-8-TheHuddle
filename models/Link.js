@@ -128,6 +128,27 @@ class Link {
 
     }
 
+
+    // --- Aumentar Votos ---
+    static vote(id){
+        const db = getDB();
+
+        // --- Obtener el Link Por su ID ---
+        const link = db.links.find(link => link.id === Number(id));
+
+        // --- Si no existe ---
+        if(!link) return null;
+
+        // --- Aumentar votos ---
+        link.votes ++;
+
+        // --- Guardar Cambios ---
+        saveDB(db);
+
+        // --- Retornar link ---
+        return link;
+    }
+
 }
 
 
