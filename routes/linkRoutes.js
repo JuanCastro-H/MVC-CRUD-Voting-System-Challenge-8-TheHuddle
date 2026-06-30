@@ -27,6 +27,13 @@ router.put("/links/:id", linkController.updateLink);
 router.delete("/links/:id", linkController.deleteLink);
 
 
+// ---------------------------------------------
+// Ruta Para Obtener Links De Un Tema En JSON
+// ---------------------------------------------
+router.get("/topics/:topicId/links/json", linkController.getLinksJSON);
+
+
+
 
 // --- Exportar router ---
 module.exports = router;
