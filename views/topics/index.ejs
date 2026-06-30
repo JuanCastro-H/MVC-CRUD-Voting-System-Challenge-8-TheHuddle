@@ -19,6 +19,14 @@
                 <%= topic.title %>
             </a>
 
+            <!-- Cantidad de Votos -->
+            <p>Votos: <%= topic.votes %></p>
+
+            <!-- Boton para votar -->
+            <form action="/topics/<%= topic.id %>/vote" method="POST">
+                <button>Votar</button>
+            </form>
+
             <!-- Link para ir al formulario de edicion -->
             <a href="/topics/<%= topic.id %>/edit">Editar</a>
 
