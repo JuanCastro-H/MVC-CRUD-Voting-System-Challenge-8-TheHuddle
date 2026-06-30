@@ -9,7 +9,7 @@ exports.createLink = (req, res) => {
     
     Link.create(req.params.topicId, req.body);     // Crea un link asociado a un tema por su id.
 
-    res.redirect('/topics/${req.params.topicId}'); // Redireccionar a la pagina del tema.
+    res.redirect(`/topics/${req.params.topicId}`); // Redireccionar a la pagina del tema.
 
 };
 
@@ -25,7 +25,7 @@ exports.showEditForm = (req, res) => {
         return res.send("Link no encontrado"); // Si no existe.
     }
 
-    res.render("link/edit", { link });         // Redireccionar a la vista y enviar link.
+    res.render("links/edit", { link });         // Redireccionar a la vista y enviar link.
 }
 
 
@@ -37,7 +37,7 @@ exports.updateLink = (req, res) => {
 
     const updatedLink = Link.update(req.params.id, req.body); // Actualizar informacion del link.
 
-    res.redirect('/topics/${updatedLink.topicId}');           // Redicreccionaar al tema del link.
+    res.redirect(`/topics/${updatedLink.topicId}`);           // Redicreccionaar al tema del link.
 }
 
 
@@ -54,7 +54,7 @@ exports.deleteLink = (req, res) => {
 
     Link.delete(req.params.id);                 // Eliminar link.
 
-    res.redirect('/topics/${link.topicId}');    // Redireccionar al tema del link.
+    res.redirect(`/topics/${link.topicId}`);    // Redireccionar al tema del link.
 }
 
 
