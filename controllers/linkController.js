@@ -14,3 +14,19 @@ exports.createLink = (req, res) => {
 };
 
 
+// =======================================
+// Mostrar formulario de edición
+// =======================================
+exports.showEditForm = (req, res) => {
+
+    const link = Link.findById(req.params.id);  // Obtener el link por ID.
+
+    if(!link){
+        return res.send("Link no encontrado"); // Si no existe.
+    }
+
+    res.render("link/edit", { link });         // Redireccionar a la vista y enviar link.
+}
+
+
+
