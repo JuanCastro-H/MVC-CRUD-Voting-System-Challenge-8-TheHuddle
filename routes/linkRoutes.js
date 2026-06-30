@@ -6,7 +6,12 @@ const linkController = require("../controllers/linkController");
 // -------------------------------------
 // Ruta para crear un link
 // -------------------------------------
-router.get("/", linkController.createLink);
+router.get("/topics/:topicId/links", linkController.createLink);
+
+
+
+
+
 
 // --- Exportar router ---
 module.exports = router;
