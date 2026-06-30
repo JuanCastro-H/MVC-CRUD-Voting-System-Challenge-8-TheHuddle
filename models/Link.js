@@ -44,7 +44,7 @@ class Link {
     static findByTopic(topicId){
         const db = getDB();
 
-        return db.links.filter(link => link.topicId === Number(topicId));
+        return db.links.filter(link => link.topicId === Number(topicId).sort( (a,b) => b.votes - a.votes));
     }
 
 
