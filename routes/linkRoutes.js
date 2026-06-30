@@ -9,6 +9,12 @@ const linkController = require("../controllers/linkController");
 router.get("/topics/:topicId/links", linkController.createLink);
 
 
+// -------------------------------------
+// Ruta Formulario de edicion
+// -------------------------------------
+router.get("/links/:id/edit", linkController.showEditForm);
+
+
 
 
 
