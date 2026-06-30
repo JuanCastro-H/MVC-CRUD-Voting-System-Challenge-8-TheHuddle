@@ -21,6 +21,11 @@ router.get("/links/:id/edit", linkController.showEditForm);
 router.put("/links/:id", linkController.updateLink);
 
 
+// -------------------------------------
+// Ruta Para Eliminar un link
+// -------------------------------------
+router.delete("/links/:id", linkController.deleteLink);
+
 
 
 // --- Exportar router ---
