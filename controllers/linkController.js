@@ -41,3 +41,20 @@ exports.updateLink = (req, res) => {
 }
 
 
+// =======================================
+// Eliminar un link
+// =======================================
+exports.deleteLink = (req, res) => {
+
+    const link = Link.findById(req.params.id);  // Buscar link por su ID.
+
+    if (!link){
+        return res.send("Link no encontrado");  // Si no existe.
+    }
+
+    Link.delete(req.params.id);                 // Eliminar link.
+
+    res.redirect('/topics/${link.topicId}');    // Redireccionar al tema del link.
+}
+
+
