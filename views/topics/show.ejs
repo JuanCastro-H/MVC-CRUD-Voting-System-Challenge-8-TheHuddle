@@ -12,6 +12,11 @@
 <!-- Votos -->
 <p>Votos: <%= topic.votes %></p>
 
+<!-- Boton Para Votar un Tema -->
+<form action="/topics/<%= topic.id %>/vote" method="POST">
+    <button>Votar Tema</button>
+</form>
+
 <!-- ID -->
 <p>ID: <%= topic.id %></p>
 
