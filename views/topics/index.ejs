@@ -1,16 +1,28 @@
+<!-- MISION: MOSTRAR TODOS LOS TEMAS -->
+
+<!-- Titulo Pagina -->
 <h1>Temas</h1>
 
+<!-- Enlace a formulario para crear un tema -->
 <a href="/topics/new">Crear Tema</a>
 
+<!-- Lista De Acciones -->
 <ul>
+
+    <!-- Obtener Temas -->
     <% topics.forEach(topic => { %>
+        
+        <!-- Toma Un elemento De La lista -->
         <li>
+            <!-- Traer Id y mostrar titulo -->
             <a href="/topics/<%= topic.id %>">
                 <%= topic.title %>
             </a>
 
+            <!-- Link para ir al formulario de edicion -->
             <a href="/topics/<%= topic.id %>/edit">Editar</a>
 
+            <!-- Logica para eliminar un Tema -->
             <form action="/topics/<%= topic.id %>?_method=DELETE" method="POST">
                 <button>Eliminar</button>
             </form>
