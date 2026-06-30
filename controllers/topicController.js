@@ -19,7 +19,7 @@ exports.getTopicById = (req, res) => {
 
     if (!topic) return res.send("Topic no encontrado"); // Verificar si existe.
 
-    const links = Link.findByTopic(req.params.id);
+    const links = Link.findByTopic(req.params.id);      // Obtener todos los links del tema.
 
     res.render("topics/show", {                         // Pasarle el Tema Y Links a show.
         topic,
@@ -63,6 +63,13 @@ exports.deleteTopic = (req, res) => {
 }
 
 
+// --- Obtener JSON De Temas ---
+exports.getTopicsJSON = (req, res) => {
+
+    const topics = Topic.findAll(); // Obtiene Todos Los Temas.
+
+    res.json(topics); // Devuelve el JSON.
+}
 
 
 
