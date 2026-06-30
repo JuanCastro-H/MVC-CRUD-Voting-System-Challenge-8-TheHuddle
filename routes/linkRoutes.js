@@ -6,7 +6,7 @@ const linkController = require("../controllers/linkController");
 // -------------------------------------
 // Ruta para crear un link
 // -------------------------------------
-router.get("/topics/:topicId/links", linkController.createLink);
+router.post("/topics/:topicId/links", linkController.createLink);
 
 
 // -------------------------------------
