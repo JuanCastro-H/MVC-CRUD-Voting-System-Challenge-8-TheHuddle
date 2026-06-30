@@ -4,6 +4,9 @@ const path = require("path"); // Sirve para construir rutas de archivos.
 // --- Construir ruta adsoluta completa a la base de datos ---
 const dbPath = path.join(__dirname, "../data/db.json");
 
+// --- Importar modelos de links ---
+const Links = require("./Link");
+
 
 // -----------------------------------
 // Funcion: Para Leer BD 
@@ -48,11 +51,11 @@ class Topic {
 
         const newTopic = {
 
-            id         : Date.now(),       // Id del tema.
-            title      : data.title,       // Titulo del tema.
-            description: data.description, // Descripcion del tema
-            votes      : 0,                // Votos del tema.
-            createdAt  : new Date()        // Momento de creacion del tema.
+            id         : Date.now(),           // Id del tema.
+            title      : data.title,           // Titulo del tema.
+            description: data.description,     // Descripcion del tema
+            votes      : 0,                    // Votos del tema.
+            createdAt  : new Date()            // Momento de creacion del tema.
 
         };
 
@@ -98,6 +101,9 @@ class Topic {
 
         // --- Guardar cambios ---
         saveDB(db);
+
+        // --- Elimina Todos los Links Relacionados ---
+        Links.deleteByTopic(id); 
     }
 
 }
