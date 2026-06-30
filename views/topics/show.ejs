@@ -46,6 +46,15 @@
             <!-- Link/Enlace externo -->
             <a href="<%= link.url %>" target="_blank">Ir al recurso</a>
 
+            <!-- Cantidad De Votos -->
+            <p>Votos: <%= link.votes %></p>
+
+            <!-- Botón para votar -->
+            <form action="/links/<%= link.id %>/vote" method="POST">
+                <button>👍 Votar Link</button>
+            </form>
+
+            
             <br><br>
 
             <!-- Link para ir al formulario de edicion -->
