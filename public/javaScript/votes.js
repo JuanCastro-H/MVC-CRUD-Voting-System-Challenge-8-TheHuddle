@@ -23,3 +23,22 @@ topicButtons.forEach(button => {
 });
 
 
+// --- Agregar Votacion A Cada Link ---
+linkButtons.forEach(button => {
+
+        // --- Detectar Click Del Boton ---
+    button.addEventListener("click", async () => { 
+
+        const id = button.dataset.id; // Obtener ID del Link.
+
+        // --- Enviar Solicitud De Voto Al servidor ---
+        const response = await fetch(`/links/${id}/vote`, { method: "POST" });
+
+        // --- Obtener Link Actualizado ---
+        const link = await response.json();
+        
+        // Actualizar Cantidad De Votos A la Vista ---
+        document.getElementById(`link-votes-${id}`).textContent = link.votes;
+
+    });
+});
