@@ -44,7 +44,9 @@ class Link {
     static findByTopic(topicId){
         const db = getDB();
 
-        return db.links.filter(link => link.topicId === Number(topicId).sort( (a,b) => b.votes - a.votes));
+        return db.links
+        .filter(link => link.topicId === Number(topicId))
+        .sort( (a,b) => b.votes - a.votes);
     }
 
 
@@ -59,7 +61,7 @@ class Link {
             title       : data.title,       // Titulo del link.
             url         : data.url,         // Url del link.
             description : data.description, // Descripcion del link.
-            votos       : 0,                // Votos del link.
+            votes       : 0,                // Votos del link.
             createdAt   : new Date()        // Momento en el que se creo el link.
         }
 
