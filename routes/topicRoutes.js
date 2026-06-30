@@ -15,6 +15,9 @@ router.get("/new", topicController.showCreateForm);
 // --- MOSTRAR FORMULARIO DE EDICIÓN ---
 router.get("/:id/edit", topicController.showEditForm);
 
+// --- OBTENER JSON ---
+router.get("/json", topicController.getTopicsJSON);
+
 // --- VER UN TEMA ESPECÍFICO ---
 router.get("/:id", topicController.getTopicById);
 
