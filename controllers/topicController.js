@@ -1,6 +1,9 @@
 // --- Importar Modelo de los temas ---
 const Topic = require("../models/Topic");
 
+// --- Importar Modelo de los Links ---
+const Link = require("../models/Link");
+
 
 // --- Logica para ver todos los temas ---
 exports.getAllTopics = (req, res) => {
@@ -16,7 +19,12 @@ exports.getTopicById = (req, res) => {
 
     if (!topic) return res.send("Topic no encontrado"); // Verificar si existe.
 
-    res.render("topics/show", { topic });               // Pasarle el tema a show.
+    const links = Link.findByTopic(req.params.id);
+
+    res.render("topics/show", {                         // Pasarle el Tema Y Links a show.
+        topic,
+        links
+    });               
 }
 
 
