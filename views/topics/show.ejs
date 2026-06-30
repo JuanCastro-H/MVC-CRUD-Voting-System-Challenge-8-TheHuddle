@@ -9,13 +9,19 @@
 <!-- Descripcion -->
 <p><%= topic.description %></p>
 
-<!-- Votos -->
-<p>Votos: <%= topic.votes %></p>
+<!-- Sistema De Votos Del Tema -->
+<p>
+    Votos:
+    <span id="topic-votes-<%= topic.id %>"><%= topic.votes %></span>
+</p>
 
-<!-- Boton Para Votar un Tema -->
-<form action="/topics/<%= topic.id %>/vote" method="POST">
-    <button>Votar Tema</button>
-</form>
+<!-- Boton de votacion (controlado por JavaScript + Fetch API) -->
+<button class="vote-topic" data-id="<%= topic.id %>">Votar Tema</button>
+
+                <!-- Boton antiguo Para Votar un Tema
+                <form action="/topics/<%= topic.id %>/vote" method="POST">
+                    <button>Votar Tema</button>
+                </form> -->
 
 <!-- ID -->
 <p>ID: <%= topic.id %></p>
@@ -46,15 +52,22 @@
             <!-- Link/Enlace externo -->
             <a href="<%= link.url %>" target="_blank">Ir al recurso</a>
 
-            <!-- Cantidad De Votos -->
-            <p>Votos: <%= link.votes %></p>
 
-            <!-- Botón para votar -->
-            <form action="/links/<%= link.id %>/vote" method="POST">
-                <button>👍 Votar Link</button>
-            </form>
+            <!-- Sistema de votos del link -->
+            <p>
+                Votos:
+                <!-- Este span se actualiza dinámicamente con JavaScript -->
+                <span id="link-votes-<%= link.id %>"><%= link.votes %></span>
+            </p>
 
-            
+            <!-- Boton de voto del link (controlado por JS) -->
+            <button class="vote-link" data-id="<%= link.id %>">Votar Link</button>
+
+                            <!-- Botón para votar 
+                            <form action="/links/<%= link.id %>/vote" method="POST">
+                                <button> Votar Link</button>
+                            </form> -->
+
             <br><br>
 
             <!-- Link para ir al formulario de edicion -->
@@ -97,4 +110,5 @@
 
 </form>
 
-
+<!-- Script que controla votos con Fetch API -->
+<script src="/js/votes.js"></script>
