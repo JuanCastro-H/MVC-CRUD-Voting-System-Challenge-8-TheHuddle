@@ -8,11 +8,11 @@ const Link = require("../models/Link");
 // --- Logica Para Votar Un Tema ---
 exports.voteTopic = (req, res) => {
 
-    // --- Aumentar Voto del Tema ---
-    Topic.vote(req.params.id);
+    // --- Aumentar Voto Y Guardar Tema ---
+    const topic = Topic.vote(req.params.id);
 
-    // --- Redireccionar a Lista de Temas ---
-    res.redirect("/topics");
+    // --- Devuelve el Tema En Json ---
+    res.json(topic)
 
 };
 
@@ -24,6 +24,6 @@ exports.voteLink = (req, res) => {
     const link = Link.vote(req.params.id);
 
     // --- Redireccionar al Tema Del Link --- 
-    res.redirect(`/topics/${ link.topicId }`);
+    res.json(link);
 }
 
