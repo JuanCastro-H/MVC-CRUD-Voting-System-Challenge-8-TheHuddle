@@ -59,3 +59,28 @@
 <% }) %>
 
 
+<!-- ===================================== -->
+<!-- FORMULARIO: CREAR NUEVO LINK -->
+<!-- ===================================== -->
+
+<h2>Nuevo Links</h2>
+
+
+<!-- Formulario Para Crear un Nuevo Link -->
+<form action="/topics/<%= topic.id %>/links" method="POST">
+
+    <!-- Titulo Del Link -->
+    <input type="text" name="title" placeholder="Titulo" required>
+
+    <!-- URL Del Link -->
+    <input type="url" name="url" placeholder="https://.." required>
+
+    <!-- Descripcion opcional -->
+    <textarea name="description" placeholder="Descripcion"></textarea>
+
+    <!-- Boton para enviar y agregar el link -->
+    <button>Agregar Link</button>
+
+</form>
+
+
