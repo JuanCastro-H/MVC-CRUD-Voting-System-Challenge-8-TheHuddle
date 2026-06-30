@@ -58,3 +58,13 @@ exports.deleteLink = (req, res) => {
 }
 
 
+// =======================================
+// Obtener JSON Con Links De Un Tema.
+// =======================================
+exports.getLinksJSON = (req, res) => {
+
+    const links = Link.findByTopic(req.params.topicId);  // Buscar Links De Un Tema Por Su ID.
+
+    res.json(links);                                     // Devolverlos En JSON
+}
+
