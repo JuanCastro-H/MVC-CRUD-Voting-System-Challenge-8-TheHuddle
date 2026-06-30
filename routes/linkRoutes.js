@@ -15,6 +15,10 @@ router.get("/topics/:topicId/links", linkController.createLink);
 router.get("/links/:id/edit", linkController.showEditForm);
 
 
+// -------------------------------------
+// Ruta Para Actualizar un link
+// -------------------------------------
+router.put("/links/:id", linkController.updateLink);
 
 
 
