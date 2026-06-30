@@ -1,1 +1,18 @@
-<h1>Links</h1>
+<h1>Editar Links</h1>
+
+<!-- Formulario para actualizar un enlace existente -->
+<form action="/links/<%= link.id %>?_method=PUT" method="POST">
+
+    <!-- Titulo link -->
+    <input type="text" name="title" value="<%= link.title %>">
+
+    <!-- URL Link -->
+    <input type="url" name="url" value="<%= link.url %>">
+
+    <!-- Descripcion Link -->
+    <textarea name="description"><%= link.description %></textarea>
+
+    <!-- Enviar Cambios -->
+    <button>Actualizar</button>
+
+</form>
