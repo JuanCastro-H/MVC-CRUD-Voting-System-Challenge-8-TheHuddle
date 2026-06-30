@@ -30,3 +30,14 @@ exports.showEditForm = (req, res) => {
 
 
 
+// =======================================
+// Actualizar un link 
+// =======================================
+exports.updateLink = (req, res) => {
+
+    const updatedLink = Link.update(req.params.id, req.body); // Actualizar informacion del link.
+
+    res.redirect('/topics/${updatedLink.topicId}');           // Redicreccionaar al tema del link.
+}
+
+
