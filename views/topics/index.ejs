@@ -20,12 +20,19 @@
             </a>
 
             <!-- Cantidad de Votos -->
-            <p>Votos: <%= topic.votes %></p>
+            <p>
+                Votos:
+                <span id="topic-votes-<%= topic.id %>">
+                    <%= topic.votes %>
+                </span>
+            </p>
 
             <!-- Boton para votar -->
-            <form action="/topics/<%= topic.id %>/vote" method="POST">
-                <button>Votar</button>
-            </form>
+            <button
+                class="vote-topic"
+                data-id="<%= topic.id %>">
+                Votar
+            </button>
 
             <!-- Link para ir al formulario de edicion -->
             <a href="/topics/<%= topic.id %>/edit">Editar</a>
@@ -37,3 +44,6 @@
         </li>
     <% }) %>
 </ul>
+
+<!-- Script que controla votos con Fetch API -->
+<script src="/javaScript/votes.js"></script>
