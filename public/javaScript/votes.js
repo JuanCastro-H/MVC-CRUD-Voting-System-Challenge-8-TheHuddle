@@ -1,9 +1,6 @@
-// --- Obtener Botones De Votaciones Para Links ---
-const linkButtons  = document.querySelectorAll(".vote-link");
-
-// ----------------------------------------
-// --- Activar Botones De Votacion ---
-// ----------------------------------------
+// --------------------------------------------
+// --- Activar Botones De Votacion (Temas) ---
+// --------------------------------------------
 function activateTopicButtons() {
 
     // --- Obtener Todos Los Botones De Votar ---
@@ -17,13 +14,13 @@ function activateTopicButtons() {
             
             // --- Obtener ID Del Tema.
             const id = button.dataset.id;  
-    
+            
             // --- Enviar Voto Al Servidor ---
             await fetch(`/topics/${id}/vote`, { method: "POST" });
             
             // --- Soliciar Listaa De Temas Actualizada ---
             const response = await fetch("topics/json");
-
+            
             // --- Convertir Respuesta A JSON ---
             const topics = await response.json(); 
     
@@ -31,31 +28,44 @@ function activateTopicButtons() {
             renderTopics(topics);
         });
     });
-
+    
 }
 
 
-// ----------------------------------------
-// --- Recargar LINKS ---
-// ----------------------------------------
-linkButtons.forEach(button => {
+// --------------------------------------------
+// --- Recargar Botones De Votacion (Links) ---
+// --------------------------------------------
 
-        // --- Detectar Click Del Boton ---
-    button.addEventListener("click", async () => { 
+function activateLinkButtons() {
+    
+    // --- Obtener Botones De Votaciones Para Links ---
+    const linkButtons  = document.querySelectorAll(".vote-link");
 
-        const id = button.dataset.id; // Obtener ID del Link.
+    linkButtons.forEach(button => {
+    
+         // --- Detectar Click Del Boton ---
+        button.addEventListener("click", async () => { 
+            
+            // --- Obtener ID del Link ---
+            const id = button.dataset.id; 
 
-        // --- Enviar Solicitud De Voto Al servidor ---
-        const response = await fetch(`/links/${id}/vote`, { method: "POST" });
+            // --- Obtener ID Del Tema Desde La URL ---
+            const topicId = window.location.pathname.split("/")[2];
 
-        // --- Obtener Link Actualizado ---
-        const link = await response.json();
-        
-        // Actualizar Cantidad De Votos A la Vista ---
-        document.getElementById(`link-votes-${id}`).textContent = link.votes;
+            // --- Voto Al servidor ---
+            await fetch(`/links/${id}/vote`, { method: "POST" });
+            
+            // --- Obtener Lista de Links Actualizada ---
+            const response = await fetch(`/topics/${topicId}/links/json`);
 
+            // --- Convertir Respuesta A JSON ---
+            const links = await response.json();
+            
+            renderLinks(links)
+    
+        });
     });
-});
+}
 
 
 // ----------------------------------------
@@ -164,4 +174,4 @@ function renderLinks (links) {
 }
 
 activateTopicButtons();
-
+activateLinkButtons();
