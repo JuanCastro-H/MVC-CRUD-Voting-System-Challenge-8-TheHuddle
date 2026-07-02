@@ -1,31 +1,42 @@
-// --- Obtener Botones Para Votar ---
-const topicButtons = document.querySelectorAll(".vote-topic");
+// --- Obtener Botones De Votaciones Para Links ---
 const linkButtons  = document.querySelectorAll(".vote-link");
 
 // ----------------------------------------
-// --- Agregar Votacion A Cada Tema ---
+// --- Activar Botones De Votacion ---
 // ----------------------------------------
-topicButtons.forEach(button => {
+function activateTopicButtons() {
 
-    // --- Detectar Click Del Boton ---
-    button.addEventListener("click", async () => {
+    // --- Obtener Todos Los Botones De Votar ---
+    const topicButtons = document.querySelectorAll(".vote-topic");
+    
+    // --- Recorrer Cada Boton ---
+    topicButtons.forEach(button => {
+        
+        // --- Detectar Click Del Boton ---
+        button.addEventListener("click", async () => {
+            
+            // --- Obtener ID Del Tema.
+            const id = button.dataset.id;  
+    
+            // --- Enviar Voto Al Servidor ---
+            await fetch(`/topics/${id}/vote`, { method: "POST" });
+            
+            // --- Soliciar Listaa De Temas Actualizada ---
+            const response = await fetch("topics/json");
 
-        const id = button.dataset.id;  // Obtener ID del tema.
-
-        // --- Enviar Solicitud De Voto Al Servidor ---
-        const response = await fetch(`/topics/${id}/vote`, { method: "POST" });
-
-        // --- Obtener tema actualizado ---
-        const topic = await response.json(); 
-
-        // Actualizar Cantidad De Votos A la Vista ---
-        document.getElementById(`topic-votes-${id}`).textContent = topic.votes;
+            // --- Convertir Respuesta A JSON ---
+            const topic = await response.json(); 
+    
+            // Actualizar Cantidad De Votos A la Vista ---
+            renderTopics(topics);
+        });
     });
-});
+
+}
 
 
 // ----------------------------------------
-// --- Recargar Los Temas  ---
+// --- Recargar LINKS ---
 // ----------------------------------------
 linkButtons.forEach(button => {
 
