@@ -2,8 +2,9 @@
 const topicButtons = document.querySelectorAll(".vote-topic");
 const linkButtons  = document.querySelectorAll(".vote-link");
 
-
+// ----------------------------------------
 // --- Agregar Votacion A Cada Tema ---
+// ----------------------------------------
 topicButtons.forEach(button => {
 
     // --- Detectar Click Del Boton ---
@@ -23,7 +24,9 @@ topicButtons.forEach(button => {
 });
 
 
-// --- Agregar Votacion A Cada Link ---
+// ----------------------------------------
+// --- Recargar Los Temas  ---
+// ----------------------------------------
 linkButtons.forEach(button => {
 
         // --- Detectar Click Del Boton ---
@@ -42,3 +45,50 @@ linkButtons.forEach(button => {
 
     });
 });
+
+
+// ----------------------------------------
+// --- Recargar Los Temas ---
+// ----------------------------------------
+
+function renderTopics(topics) {
+
+    //  --- Obtener la Lista De Temas ---
+    const topicsList =  document.getElementById("topics-list");
+
+    // --- Borrar Lista De Temas Vieja ---
+    topicsList.innerHTML = "";
+
+    // --- Crear Nuevamente La lista
+    topics.forEach(topic => {
+
+        topicsList.innerHTML += `
+            <!-- Tema -->
+            <li>
+                <!-- Enlace Al Tema -->
+                <a href="/topics/${topic.id}">${topic.title}</a>
+
+                <!-- Cantidad De Votos -->
+                <p>
+                    votos:
+                    <span id="topic-votes-${topic.id}">${topic.votes}</span>
+                </p> 
+
+                <!-- Boton Para Votar -->
+                <button class="vote-topic" data-id="${topic.id}">Votar</button>
+
+                <!-- Enlace Para Editar --> 
+                <a href="/topics/${topic.id}/edit">Editar</a>
+
+                <!-- Formulario Para Eliminar -->
+                <form action="/topics/${topic.id}?_method=DELETE" method="POST">
+                    <button>Eliminar</button>
+                </form>
+            <li>
+        `;
+    });
+
+    // --- Reactivar Botones Eliminados ---
+    activateTopicButtons();
+
+}
