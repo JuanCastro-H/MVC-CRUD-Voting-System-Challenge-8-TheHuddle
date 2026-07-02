@@ -25,7 +25,7 @@ function activateTopicButtons() {
             const response = await fetch("topics/json");
 
             // --- Convertir Respuesta A JSON ---
-            const topic = await response.json(); 
+            const topics = await response.json(); 
     
             // Actualizar Cantidad De Votos A la Vista ---
             renderTopics(topics);
@@ -81,7 +81,7 @@ function renderTopics(topics) {
 
                 <!-- Cantidad De Votos -->
                 <p>
-                    votos:
+                    Votos:
                     <span id="topic-votes-${topic.id}">${topic.votes}</span>
                 </p> 
 
@@ -103,3 +103,65 @@ function renderTopics(topics) {
     activateTopicButtons();
 
 }
+
+
+// ----------------------------------------
+// --- Recargar Los Links ---
+// ----------------------------------------
+function renderLinks (links) {
+
+    // --- Obtener La Lista De Links ---
+    const linksList = document.getElementById("links-list");
+
+    // --- Borrar Lista De Links Vieja ---
+    linksList.innerHTML = "";
+
+    // --- Obtener El ID Del Tema Desde la URL ---
+    const topicId = window.location.pathname.split("/")[2];
+
+    links.forEach(link => {
+
+        linksList.innerHTML += `
+
+            <!-- Link -->
+            <div>
+
+                <!-- Titulo Del Link -->
+                <h3>${link.title}</h3>
+
+                <!-- Descripcion Del Link -->
+                <p>
+                    ${link.description}
+                </p>
+
+                <!-- Cantidad De Votos -->
+                <p>
+                    Votos:
+                    <span id="link-votes-${link.id}">${link.votes}</span>
+                </p>
+
+                <!-- Boton Para Votar -->
+                <button class="vote-link" data-id="${link.id}">Votar Link</button>
+
+                <br><br>
+
+                <!-- Enlace Para Editar -->
+                <a href="/links/${link.id}/edit">Editar</a>
+
+                <!-- Formulaario Para Eliminar -->
+                <form action="/link/${link.id}?_method=DELETE" method="POST">
+                    <button>Eliminar</button>
+                </form>
+
+            </div>
+
+            <!-- Separador Entre Links -->
+            <hr>
+                        
+        `;
+    });
+    // --- Reactivar Los Botones De Votacion ---
+}
+
+activateTopicButtons();
+
