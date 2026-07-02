@@ -2,6 +2,8 @@ const express = require("express");
 
 const app = express();
 
+const methodOverride = require("method-override");
+
 // -------------------------------------
 // IMPORTAR ROUTERS
 // -------------------------------------
@@ -32,8 +34,8 @@ app.use(methodOverride("_method"));
 // --- Configuracion de rutas ---
 app.use("/topics", topicRoutes);
 app.use("/login", authRoutes);
-app.use("/link", linkRoutes);
-app.use("/votes", voteRoutes);
+app.use(linkRoutes);
+app.use(voteRoutes);
 
 
 // --- Servidor escuchando en el puerto 3000 ---

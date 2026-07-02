@@ -15,17 +15,32 @@ function activateTopicButtons() {
             // --- Obtener ID Del Tema.
             const id = button.dataset.id;  
             
-            // --- Enviar Voto Al Servidor ---
-            await fetch(`/topics/${id}/vote`, { method: "POST" });
-            
-            // --- Soliciar Listaa De Temas Actualizada ---
-            const response = await fetch("topics/json");
+            // --- Enviar Voto Al Servidor Y Guardar Respuesta ---
+            const voteResponse = await fetch(`/topics/${id}/vote`, { method: "POST" });
             
             // --- Convertir Respuesta A JSON ---
-            const topics = await response.json(); 
-    
-            // Actualizar Cantidad De Votos A la Vista ---
-            renderTopics(topics);
+            const topic = await voteResponse.json(); 
+
+            // --- Buscar Lista De Temas
+            const topicsList = document.getElementById("topics-list");
+
+            // --- Si existe La Lista De Temas ---
+            if (topicsList) { // Entrar a Index
+
+                // --- Soliciar Lista De Temas Actualizada ---
+                const response = await fetch("/topics/json");
+                const topics = await response.json();
+
+                renderTopics(topics);
+            
+            // --- Si No Existe ---
+            } else { // Entrar a Show
+
+                // --- Actualizar Numero De Votos Del Tema.
+                document.getElementById(`topic-votes-${id}`).textContent = topic.votes;
+
+            }
+
         });
     });
     
@@ -144,6 +159,11 @@ function renderLinks (links) {
                     ${link.description}
                 </p>
 
+                <!-- Enlace Para Ir Al Recurso -->
+                <a href="${link.url}" target="_blank">
+                    Ir al recurso
+                </a>
+
                 <!-- Cantidad De Votos -->
                 <p>
                     Votos:
@@ -158,8 +178,8 @@ function renderLinks (links) {
                 <!-- Enlace Para Editar -->
                 <a href="/links/${link.id}/edit">Editar</a>
 
-                <!-- Formulaario Para Eliminar -->
-                <form action="/link/${link.id}?_method=DELETE" method="POST">
+                <!-- Formulario Para Eliminar -->
+                <form action="/links/${link.id}?_method=DELETE" method="POST">
                     <button>Eliminar</button>
                 </form>
 
@@ -171,6 +191,7 @@ function renderLinks (links) {
         `;
     });
     // --- Reactivar Los Botones De Votacion ---
+    activateLinkButtons();
 }
 
 activateTopicButtons();

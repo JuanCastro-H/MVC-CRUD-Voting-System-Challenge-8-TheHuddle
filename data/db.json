@@ -1,5 +1,31 @@
 {
-    "users": [],
-    "topics": [],
-    "links":[]
+  "topics": [
+    {
+      "id": 1782997867059,
+      "title": "Python",
+      "description": "hola",
+      "votes": 3,
+      "createdAt": "2026-07-02T13:11:07.059Z"
+    }
+  ],
+  "links": [
+    {
+      "id": 1782997894925,
+      "topicId": 1782997867059,
+      "title": "hol1",
+      "url": "http://localhost:3000/topics/new",
+      "description": "dadasds",
+      "votes": 6,
+      "createdAt": "2026-07-02T13:11:34.925Z"
+    },
+    {
+      "id": 1782997993096,
+      "topicId": 1782997867059,
+      "title": "dsadsadasd",
+      "url": "http://localhost:3000/topics/new",
+      "description": "",
+      "votes": 286,
+      "createdAt": "2026-07-02T13:13:13.096Z"
+    }
+  ]
 }
