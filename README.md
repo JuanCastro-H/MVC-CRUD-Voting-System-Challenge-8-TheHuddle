@@ -166,7 +166,7 @@ http://localhost:3000/topics
 
 ---
 
-# 🇪🇸 Resumen en Español
+# Resumen en Español
 
 CRUD, Códigos y Votos es una aplicación web desarrollada con Node.js y Express que permite gestionar temas de aprendizaje y los recursos asociados a cada uno mediante operaciones CRUD completas.
 
