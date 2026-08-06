@@ -168,4 +168,68 @@ http://localhost:3000/topics
 
 # 🇪🇸 Resumen en Español
 
-Proyecto CRUD desarrollado con Node.js y Express que permite administrar temas y recursos de aprendizaje mediante una arquitectura MVC. Incluye un sistema de votación con actualización dinámica usando Fetch API y persistencia en un archivo JSON. Como evolución futura se planea incorporar autenticación, mejoras visuales con CSS, mayor seguridad y una base de datos relacional como MySQL o PostgreSQL.
+CRUD, Códigos y Votos es una aplicación web desarrollada con Node.js y Express que permite gestionar temas de aprendizaje y los recursos asociados a cada uno mediante operaciones CRUD completas.
+
+La plataforma incorpora un sistema de votación que permite valorar tanto los temas como los enlaces, reordenando automáticamente el contenido según su popularidad sin necesidad de recargar la página.
+
+El proyecto fue diseñado siguiendo el patrón de arquitectura MVC, separando claramente rutas, controladores, modelos y vistas para mantener una estructura organizada y escalable.
+
+---
+
+## 🎯 Objetivo
+
+El proyecto fue desarrollado para practicar conceptos fundamentales del desarrollo backend, entre ellos:
+
+- arquitectura MVC con Node.js y Express,
+- desarrollo de APIs y manejo de rutas HTTP,
+- operaciones CRUD completas,
+- renderizado del lado del servidor mediante EJS,
+- comunicación asíncrona utilizando Fetch API,
+- actualización dinámica de la interfaz sin recargar la página,
+- organización y persistencia de datos utilizando archivos JSON.
+
+---
+
+## ⚙️ Funcionamiento
+
+- Los usuarios pueden crear, editar y eliminar temas de aprendizaje.
+- Cada tema puede contener múltiples enlaces o recursos relacionados.
+- Tanto los temas como los enlaces pueden recibir votos positivos.
+- Cada voto actualiza la información almacenada y reorganiza automáticamente el contenido según la cantidad de votos obtenidos.
+- Las actualizaciones de la interfaz se realizan mediante peticiones Fetch, evitando recargar la página completa y ofreciendo una experiencia más fluida.
+
+---
+
+## 📊 Características destacadas
+
+- CRUD completo de Temas
+- CRUD completo de Links asociados a cada Tema
+- Sistema de votación para Temas y Links
+- Reordenamiento dinámico según la cantidad de votos
+- Arquitectura MVC con Express
+- Vistas renderizadas mediante EJS
+- Interactividad utilizando JavaScript puro y Fetch API
+- Persistencia de datos mediante archivos JSON
+- Eliminación en cascada de los recursos asociados a un tema
+
+---
+
+## 🚀 Próximas mejoras
+
+Este proyecto continuará evolucionando incorporando nuevas funcionalidades propias de aplicaciones web reales, entre ellas:
+
+- Sistema de autenticación y autorización de usuarios.
+- Base de datos relacional (PostgreSQL o MySQL) en reemplazo del almacenamiento en JSON.
+- Mejoras visuales mediante CSS y un diseño de interfaz más moderno.
+- Validaciones y medidas adicionales de seguridad tanto en cliente como en servidor.
+- Persistencia más robusta y preparada para múltiples usuarios concurrentes.
+
+---
+
+## 🧠 Conclusión
+
+CRUD, Códigos y Votos demuestra cómo construir una aplicación web completa utilizando tecnologías fundamentales del ecosistema Node.js.
+
+El proyecto combina una arquitectura organizada con una interfaz dinámica, permitiendo implementar operaciones CRUD, votaciones en tiempo real y una clara separación de responsabilidades entre cada capa de la aplicación.
+
+Además de servir como práctica del patrón MVC y del desarrollo con Express, constituye una base sólida sobre la cual continuar incorporando nuevas funcionalidades propias de aplicaciones web modernas, como autenticación, bases de datos relacionales y mejoras en seguridad y experiencia de usuario.
